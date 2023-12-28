@@ -1,0 +1,123 @@
+  body {
+    position: relative;
+    color: green; /* Text color */
+    margin-top: 3.5rem;
+  }
+
+  body::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('/static/whitelights.jpeg') no-repeat center center;
+    background-size: cover;
+    opacity: .7; /* Adjust transparency as needed */
+    z-index: -1;
+  }
+
+  .container {
+    position: relative;
+    z-index: 1;
+  }
+    
+    h1, h2, h3, h4, h5, h6 {
+      color: #444444;
+    }
+    
+    .bg-steel {
+      background-image: url('/static/candy-cane.jpeg');
+      background-repeat: repeat;
+      opacity: .9; /* Adjust transparency as needed */
+  }
+
+
+  .nav-link {
+    color: white !important; /* Makes text color white */
+    
+  }
+  .nav-link:hover {
+    background-color: green; /* Changes background to green on hover */
+    color: white; /* Keeps text color white on hover */
+  }
+
+
+  .site-header {
+    background-color: green; /* Set the navigation background to white */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Optional: adds a subtle shadow for depth */
+  }
+
+    .navbar-brand, .nav-item {
+      background-color: rgb(255, 160, 174); /* Set each navigation item background to white */
+      margin: 0 5px; /* Optional: adds spacing between navigation items */
+      border-radius: 5px; /* Optional: rounds the corners of the navigation items */
+      
+    }  
+    .site-header .navbar-nav .nav-link.active {
+      font-weight: 500;
+    }
+  
+  .content-section {
+    background: #ffffff;
+    padding: 10px 20px;
+    border: 1px solid #dddddd;
+    border-radius: 3px;
+    margin-bottom: 20px;
+  }
+  
+  .article-title {
+    color: #8d1a1a;
+  }
+  
+  a.article-title:hover {
+    color: rgb(1, 68, 1);
+    text-decoration: none;
+  }
+  
+  .article-content {
+    white-space: pre-line;
+  }
+  
+  .article-img {
+    height: 65px;
+    width: 65px;
+    margin-right: 16px;
+  }
+  
+  .article-metadata {
+    padding-bottom: 1px;
+    margin-bottom: 4px;
+    border-bottom: 1px solid #e3e3e3
+  }
+  
+  .article-metadata a:hover {
+    color: #333;
+    text-decoration: none;
+  }
+  
+  .article-svg {
+    width: 25px;
+    height: 25px;
+    vertical-align: middle;
+  }
+  
+  .account-img {
+    height: 125px;
+    width: 125px;
+    margin-right: 20px;
+    margin-bottom: 16px;
+  }
+  
+  .account-heading {
+    font-size: 2.5rem;
+  }
+
+  .sidebar-snowman {
+    display: block; /* Replace with flex or inline-block if necessary */
+    width: 100px; /* Set the width as needed */
+    height: auto; /* Maintain aspect ratio */
+    margin-top: 20px; /* Add some space above the snowman */
+    margin-left: auto; /* Center the snowman if desired */
+    margin-right: auto; /* Center the snowman if desired */
+}
