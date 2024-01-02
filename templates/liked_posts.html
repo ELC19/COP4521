@@ -1,0 +1,20 @@
+{% extends "layout.html" %}
+{% block content %}
+  {% for post_data, net_likes in posts %}
+    <article class="media content-section">
+      <div class="media-body">
+        <div class="article-metadata">
+          <small class="text-muted">{{ post_data.time }}</small>
+        </div>
+        <h4><a class="article-title" href="{{ post_data.url }}">{{ post_data.title }}</a></h4>
+        <p class="article-content">By: {{ post_data.by }}</p>
+        <a class="article-url" href="{{ post_data.url }}">{{ post_data.url }}</a>
+        <div style="display: flex; flex-direction: column; align-items: start; gap: 5px;">
+          <p style="font-size: 13px;">{{ net_likes }} likes</p>
+        </div>
+      </div>
+    </article>
+  {% else %}
+    <p>You have not liked any posts yet.</p>
+  {% endfor %}
+{% endblock content %}

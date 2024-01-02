@@ -1,0 +1,43 @@
+{% extends "layout.html" %}
+{% block content %}
+<h3>Top Stories</h3>
+  {% for post_data in posts %}
+    <article class="media content-section">
+      <div class="media-body">
+        <div class="article-metadata">
+          <small class="text-muted">{{ post_data.time }}</small>
+        </div>
+        <h4><a class="article-title" href="{{ post_data.url }}">{{ post_data.title }}</a></h4>
+        <p class="article-content">By: {{ post_data.by }}</p>
+        <a class="article-url" href="{{ post_data.url }}">{{ post_data.url }}</a>
+        <div style="display: flex; flex-direction: column; align-items: start; gap: 5px;"> <!-- Flex container for buttons and likes, aligned to start -->
+          <div style="display: flex; gap: 10px;"> <!-- Flex container for buttons -->
+            <form action="{{ url_for('like_post', post_id=post_data.id) }}" method="post" style="margin: 0;">
+              <button type="submit" class="btn btn-link" style="color: inherit; padding: 0; border: none; background: none;">
+                <i class="fas fa-thumbs-up"></i>
+              </button>
+            </form>
+            <form action="{{ url_for('dislike_post', post_id=post_data.id) }}" method="post" style="margin: 0;">
+              <button type="submit" class="btn btn-link" style="color: inherit; padding: 0; border: none; background: none;">
+                <i class="fas fa-thumbs-down"></i>
+              </button>
+            </form>
+          </div>
+          <p style="font-size: 13px;">{{ post_data.net_likes }} likes</p> 
+         </div>
+      </div>
+    </article>
+  {% endfor %}
+  <!-- Pagination Controls -->
+  {% if pagination_info.total_pages > 1 %}
+    <nav>
+      <ul class="pagination justify-content-center">
+        {% for page_num in range(1, pagination_info.total_pages + 1) %}
+          <li class="page-item{% if page_num == pagination_info.page %} active{% endif %}">
+            <a class="page-link" href="{{ url_for('home', page=page_num) }}">{{ page_num }}</a>
+          </li>
+        {% endfor %}
+      </ul>
+    </nav>
+  {% endif %}
+{% endblock content %}

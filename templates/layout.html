@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='main.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="site-header">
+      <nav class="navbar navbar-expand-md navbar-dark bg-steel fixed-top">
+        <div class="container d-flex justify-content-between">
+          <!-- Navbar Left Side -->
+          <div class="d-flex">
+              <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle" aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse" id="navbarToggle">
+                  <div class="navbar-nav">
+                      <a class="nav-item nav-link" href="{{ url_for('home') }}"><i class="fas fa-home"></i></a>
+                      <a class="nav-item nav-link" href="{{ url_for('profile') }}"><i class="fas fa-user"></i></a>
+                      <a class="nav-item nav-link" href="{{ url_for('newsfeed') }}"><i class="fas fa-newspaper"></i></a>
+                  </div>
+              </div>
+          </div>
+          <!-- Centered Brand/Title -->
+          <a class="navbar-brand mx-0" href="/" style="font-family: 'Roboto', sans-serif;">Hacker News</a>
+          <!-- Navbar Right Side -->
+          <div class="d-flex">
+              <div class="navbar-nav">
+                  <a class="nav-item nav-link" href="{{ url_for('login') }}"><i class="fas fa-sign-in-alt"></i></a>
+                  <a class="nav-item nav-link" href="{{ url_for('register') }}"><i class="fas fa-user-plus"></i></a>
+                  <a class="nav-item nav-link" href="{{ url_for('logout') }}"><i class="fas fa-sign-out-alt"></i></a>
+              </div>            
+          </div>
+        </div>
+      </nav>
+    </header>
+    <main role="main" class="container">
+      <div class="row">
+        <div class="col-md-8">
+          {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+              {% for category, message in messages %}
+                <div class="alert alert-{{ category }}">
+                  {{ message }}
+                </div>
+              {% endfor %}
+            {% endif %}
+          {% endwith %}
+          {% block content %}{% endblock %}
+        </div>
+        <div class="col-md-4">
+          <div class="content-section">
+            <div class="text-center">
+              <p style='color: black; font-size: 18px;'>Welcome!</p>
+          </div>          
+             <!-- Sidebar List with icons -->
+              <ul class="list-group">
+                <li class="list-group-item"><i class="fas fa-fire-alt text-black"></i> Latest Posts</li>
+                <li class="list-group-item"><i class="fas fa-user text-black"></i> <a href="{{ url_for('profile') }}" class="text-black">Profile</a></li>
+                <li class="list-group-item"><i class="fas fa-heart text-black"></i> <a href="{{ url_for('liked_posts') }}" class="text-black">Liked Posts</a></li>
+                {% if session.user and session.user.is_admin %}
+                <li class="list-group-item"><i class="fas fa-tools text-black"></i> <a href="{{ url_for('admin_dashboard') }}" class="text-black">Admin</a></li>
+                {% endif %}
+                <li class="list-group-item">
+                  <form action="{{ url_for('search_results') }}" method="get" class="search-form">
+                    <i class="fas fa-search text-black form-control-search-icon"></i>
+                    <input class="form-control search-input" type="search" placeholder="Search" aria-label="Search" name="q">
+                  </form>
+                </li>
+                
+              </ul>
+              <img src="{{ url_for('static', filename='news.jpeg') }}" alt="Snowman" class="sidebar-snowman" />
+            </p>
+          </div>
+        </div>
+      </div>
+    </main>
+    <footer class="text-muted">
+      <div class="container">
+        <p class="float-right">
+          <a href="#">Back to top</a>
+        </p>
+        <p>Hacker News</p>
+      </div>  
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</body>
+</html>

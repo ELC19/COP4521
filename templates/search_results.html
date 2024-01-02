@@ -1,0 +1,19 @@
+{% extends "layout.html" %}
+{% block content %}
+  <h2>Search Results</h2>
+  {% for post_data in posts %}
+    <article class="media content-section">
+      <div class="media-body">
+        <div class="article-metadata">
+          <small class="text-muted">{{ post_data.time }}</small>
+        </div>
+        <h4><a class="article-title" href="#">{{ post_data.title }}</a></h4>
+        <p class="article-content">By: {{ post_data.by }}</p>
+        <a class="article-url" href="{{ post_data.url }}">{{ post_data.url }}</a>
+        <div style="display: flex; flex-direction: column; align-items: start; gap: 5px;">
+          
+      </div>
+    </article>
+  {% endfor %}
+  <!-- Include pagination if necessary -->
+{% endblock content %}
