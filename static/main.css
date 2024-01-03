@@ -63,10 +63,9 @@ a.article-title:hover {
   white-space: pre-line;
 }
 
-/* main.css */
 .article-url {
   font-size: 0.8rem; /* Smaller font size */
-  color: #555; /* Optional: a different color to distinguish the URL */
+  color: #555; /* different color to distinguish the URL */
   overflow-wrap: break-word; /* To prevent long URLs from overflowing */
   display: block;
   margin-bottom: 10px;
@@ -122,7 +121,6 @@ a.article-title:hover {
   color: #333; /* Adjust the color as needed */
 }
 
-/* Main CSS file */
 /* Style adjustments for the list items */
 .list-group-item {
   display: flex;

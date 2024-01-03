@@ -420,6 +420,7 @@ def dislike_post(post_id):
 
 @app.route("/liked_posts")
 def liked_posts():
+    """displays the liked posts"""
     if 'user' not in session:
         flash('You must be logged in to view liked posts.', 'danger')
         return redirect(url_for('login'))
@@ -443,18 +444,18 @@ def liked_posts():
 
 @app.route('/search', methods=['GET'])
 def search_results():
+    """searches for the title and author"""
     query = request.args.get('q')
     if not query:
         return redirect(url_for('home'))
 
-    # Search logic
+    # Search logic 
     results = Post.query.filter(
         (Post.title.ilike(f'%{query}%')) |
         (Post.by.ilike(f'%{query}%'))
     ).all()
 
     return render_template('search_results.html', posts=results)
-
 
 
 if __name__ == '__main__':

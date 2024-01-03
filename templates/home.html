@@ -9,7 +9,7 @@
         <h4><a class="article-title" href="{{ post_data.url }}">{{ post_data.title }}</a></h4>
         <p class="article-content">By: {{ post_data.by }}</p>
         <a class="article-url" href="{{ post_data.url }}">{{ post_data.url }}</a>
-        <div style="display: flex; flex-direction: column; align-items: start; gap: 5px;"> <!-- Flex container for buttons and likes, aligned to start -->
+        <div style="display: flex; flex-direction: column; align-items: start; gap: 5px;"> <!-- Flex container for buttons and likes -->
           <div style="display: flex; gap: 10px;"> <!-- Flex container for buttons -->
             <form action="{{ url_for('like_post', post_id=post_data.id) }}" method="post" style="margin: 0;">
               <button type="submit" class="btn btn-link" style="color: inherit; padding: 0; border: none; background: none;">
